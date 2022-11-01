@@ -1,6 +1,6 @@
 import plantas.*
 
-describe "Tests de plantas" {
+describe "tests de plantas" {
     const mentita1 = new Menta(anioObtencionSemilla = 2020, altura = 1)
     const mentita2 = new Menta(anioObtencionSemilla = 2020, altura = 0.3)
     const sojita1 = new Soja(anioObtencionSemilla = 2009, altura = 0.6)

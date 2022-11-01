@@ -14,7 +14,7 @@ class Planta {
     // Número de metros cuadrados. 
     method espacioOcupado()
     
-    method seAsociaBienEnParcelaLaPlanta(unaParcela) = unaParcela.tipoParcela().seAsocianBien(self, unaParcela)
+    method seAsociaBienEnParcela(unaParcela) = unaParcela.tipoParcela().seAsocianBien(self, unaParcela)
 }
 
 // Menta.

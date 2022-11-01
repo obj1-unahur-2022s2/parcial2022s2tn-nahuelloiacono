@@ -26,7 +26,7 @@ class Parcela {
 	
 	method porcentajeDePlantasBienAsociadas() = self.cantidadDePlantasBienAsociadas() * 100 / self.cantidadPlantas()
 	// Método auxiliar para self.porcentajeDePlantasBienAsociadas().
-	method cantidadDePlantasBienAsociadas() = plantas.count({p => p.seAsociaBienEnParcelaLaPlanta(p, self)})
+	method cantidadDePlantasBienAsociadas() = plantas.count({p => p.seAsociaBienEnParcela(self)})
 }
 
 object ecologica {

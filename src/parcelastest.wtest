@@ -1,7 +1,7 @@
 import parcelas.*
 import plantas.*
 
-describe "Tests de plantas" {
+describe "tests de plantas" {
     const parcela1 = new Parcela(ancho = 20, largo = 1, horasDeSolRecibidas = 8)
     const sojita1 = new Soja(anioObtencionSemilla = 2010, altura = 1.1)
     const sojita2 = new Soja(anioObtencionSemilla = 2010, altura = 1.2)

@@ -2,7 +2,7 @@ import inta.*
 import parcelas.*
 import plantas.*
 
-describe "Tests de Inta" {
+describe "tests de Inta" {
     const parcela1 = new Parcela(ancho = 20, largo = 1, horasDeSolRecibidas = 8)
     const parcela2 = new Parcela(ancho = 50, largo = 1, horasDeSolRecibidas = 10)
     const mentita1 = new Menta(anioObtencionSemilla = 2020, altura = 1)
