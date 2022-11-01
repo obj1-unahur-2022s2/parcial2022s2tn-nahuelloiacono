@@ -1,2 +1,39 @@
 import parcelas.*
+import plantas.*
 
+describe "Tests de plantas" {
+    const parcela1 = new Parcela(ancho = 20, largo = 1, horasDeSolRecibidas = 8)
+    const sojita1 = new Soja(anioObtencionSemilla = 2010, altura = 1.1)
+    const sojita2 = new Soja(anioObtencionSemilla = 2010, altura = 1.2)
+    const sojita3 = new Soja(anioObtencionSemilla = 2010, altura = 1.3)
+    const sojita4 = new Soja(anioObtencionSemilla = 2010, altura = 1.4)
+    const sojita5 = new Soja(anioObtencionSemilla = 2010, altura = 1.5)
+    
+
+    test "La superficie de parcela1 es 20 metros cuadrados" {
+        assert.equals(20, parcela1.superficie())
+    }
+    
+    test "La cantidad maxima de plantas que tolera parcela1 es 4" {
+        assert.equals(4, parcela1.cantidadDePlantasQueTolera())
+    }
+    
+    test "La parcela1 con 4 plantas de soja no tendria complicaciones" {
+    	parcela1.plantarPlanta(sojita1)
+    	parcela1.plantarPlanta(sojita2)
+    	parcela1.plantarPlanta(sojita3)
+    	parcela1.plantarPlanta(sojita4)
+    	
+    	assert.notThat(parcela1.tieneComplicaciones())	
+    }
+    
+    test "La parcela1 con 5 plantas de soja tiraría error si quiero incorporar ula 5ta" {
+    	parcela1.plantarPlanta(sojita1)
+    	parcela1.plantarPlanta(sojita2)
+    	parcela1.plantarPlanta(sojita3)
+    	parcela1.plantarPlanta(sojita4)
+    	parcela1.plantarPlanta(sojita5)
+    	
+    	assert.that("o se puede superar los 10 miembros"), parcela1.plantarPlanta(sojita5))"
+    }
+}
