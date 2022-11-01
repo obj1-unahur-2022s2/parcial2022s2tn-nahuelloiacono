@@ -3,10 +3,12 @@ import plantas.*
 class Parcela {
 	var ancho
 	var largo
-	var horasDeSolRecibidas
+	var property horasDeSolRecibidas
 	const plantas = []
+	var property tipoParcela = ecologica
 	
 	method cantidadPlantas() = plantas.size()
+	method listaDePlantas() = plantas
 	method superficie() = ancho * largo
 	method cantidadDePlantasQueTolera() {return
 		if (ancho > largo) self.superficie() / 5
@@ -20,5 +22,19 @@ class Parcela {
 			{plantas.add(unaPlanta)}
 	}
 	// Método auxiliar para self.plantarPlanta(unaPlanta).
-	method hayLugarEnParcela() = self.cantidadPlantas() < self.cantidadDePlantasQueTolera()  
+	method hayLugarEnParcela() = self.cantidadPlantas() < self.cantidadDePlantasQueTolera() 
+	
+	method porcentajeDePlantasBienAsociadas() = self.cantidadDePlantasBienAsociadas() * 100 / self.cantidadPlantas()
+	// Método auxiliar para self.porcentajeDePlantasBienAsociadas().
+	method cantidadDePlantasBienAsociadas() = plantas.count({p => p.seAsociaBienEnParcelaLaPlanta(p, self)})
+}
+
+object ecologica {
+	method seAsocianBien(unaPlanta, unaParcela) = 
+		not unaParcela.tieneComplicaciones() and unaPlanta.leResultaIdealLaParcela(unaParcela)
+}
+
+object industrial {
+	method seAsocianBien(unaPlanta, unaParcela) = 
+		unaParcela.cantidadPlantas() <= 2 and unaPlanta.esFuerte()
 }

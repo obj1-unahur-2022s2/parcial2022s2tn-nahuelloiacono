@@ -1,0 +1,45 @@
+import inta.*
+import parcelas.*
+import plantas.*
+
+describe "Tests de Inta" {
+    const parcela1 = new Parcela(ancho = 20, largo = 1, horasDeSolRecibidas = 8)
+    const parcela2 = new Parcela(ancho = 50, largo = 1, horasDeSolRecibidas = 10)
+    const mentita1 = new Menta(anioObtencionSemilla = 2020, altura = 1)
+    const mentita2 = new Menta(anioObtencionSemilla = 2020, altura = 0.3)
+    const sojita1 = new Soja(anioObtencionSemilla = 2009, altura = 2)
+    const quinoa1 = new Quinoa(horasDeSolToleradas = 12, anioObtencionSemilla = 2010, altura = 2)
+    const quinoa2 = new Quinoa(horasDeSolToleradas = 9, anioObtencionSemilla = 2001, altura = 2)
+    
+    method initialize() {
+    	parcela1.plantarPlanta(mentita1)
+    	parcela1.plantarPlanta(mentita2)
+    	parcela2.plantarPlanta(sojita1)
+    	parcela2.plantarPlanta(quinoa1)
+    	parcela2.plantarPlanta(quinoa2)
+    }
+    
+    test "la cantidad de plantas en la parcela 1 es 2" {	
+    	assert.equals(2, parcela1.cantidadPlantas())
+    }
+    
+    test "la cantidad de plantas en la parcela 2 es 3" {
+    	assert.equals(3, parcela2.cantidadPlantas())
+    }
+    
+    test "la cantidad de parcelas del inta son 2" {
+        inta.agregarParcela(parcela1)
+    	inta.agregarParcela(parcela2)
+        
+        assert.equals(2, inta.cantidadDeParcelas())
+    }
+    
+    test "la cantidad de plantas en parcelas del inta son 5 y el promedio son 2.5" {
+    	inta.agregarParcela(parcela1)
+    	inta.agregarParcela(parcela2)
+    	
+    	assert.equals(5, inta.sumaDeCantidadDePlantasEnParcelas())
+    	assert.equals(2.5, inta.promedioDePlantasPorParcela())
+    }
+   
+}

@@ -9,31 +9,27 @@ describe "Tests de plantas" {
     const sojita4 = new Soja(anioObtencionSemilla = 2010, altura = 1.4)
     const sojita5 = new Soja(anioObtencionSemilla = 2010, altura = 1.5)
     
+    method initialize() {
+    	parcela1.plantarPlanta(sojita1)
+    	parcela1.plantarPlanta(sojita2)
+    	parcela1.plantarPlanta(sojita3)
+    	parcela1.plantarPlanta(sojita4)
+    }
 
-    test "La superficie de parcela1 es 20 metros cuadrados" {
+    test "la superficie de parcela1 es 20 metros cuadrados" {
         assert.equals(20, parcela1.superficie())
     }
     
-    test "La cantidad maxima de plantas que tolera parcela1 es 4" {
+    test "la cantidad maxima de plantas que tolera parcela1 es 4" {
         assert.equals(4, parcela1.cantidadDePlantasQueTolera())
     }
     
-    test "La parcela1 con 4 plantas de soja no tendria complicaciones" {
-    	parcela1.plantarPlanta(sojita1)
-    	parcela1.plantarPlanta(sojita2)
-    	parcela1.plantarPlanta(sojita3)
-    	parcela1.plantarPlanta(sojita4)
-    	
+    test "la parcela1 con 4 plantas de soja no tendria complicaciones" {
     	assert.notThat(parcela1.tieneComplicaciones())	
     }
     
-    test "La parcela1 con 5 plantas de soja tiraría error si quiero incorporar ula 5ta" {
-    	parcela1.plantarPlanta(sojita1)
-    	parcela1.plantarPlanta(sojita2)
-    	parcela1.plantarPlanta(sojita3)
-    	parcela1.plantarPlanta(sojita4)
-    	parcela1.plantarPlanta(sojita5)
-    	
-    	assert.that("o se puede superar los 10 miembros"), parcela1.plantarPlanta(sojita5))"
-    }
+    // No se como testear el error, pero al testear marca que no puede agregarse una quinta.
+    // test "La parcela1 no puede agregar una quinta planta y tira error" {
+    //	assert.equals("No se puede plantar la planta", parcela1.plantarPlanta(sojita5))	
+    // }
 }
