@@ -8,23 +8,27 @@ describe "tests de Inta" {
     const mentita1 = new Menta(anioObtencionSemilla = 2020, altura = 1)
     const mentita2 = new Menta(anioObtencionSemilla = 2020, altura = 0.3)
     const sojita1 = new Soja(anioObtencionSemilla = 2009, altura = 2)
+    const sojita2 = new Soja(anioObtencionSemilla = 2009, altura = 2)
     const quinoa1 = new Quinoa(horasDeSolToleradas = 12, anioObtencionSemilla = 2010, altura = 2)
     const quinoa2 = new Quinoa(horasDeSolToleradas = 9, anioObtencionSemilla = 2001, altura = 2)
+    const quinoa3 = new Quinoa(horasDeSolToleradas = 10, anioObtencionSemilla = 2005, altura = 2)
     
     method initialize() {
     	parcela1.plantarPlanta(mentita1)
     	parcela1.plantarPlanta(mentita2)
     	parcela2.plantarPlanta(sojita1)
+    	parcela2.plantarPlanta(sojita2)
     	parcela2.plantarPlanta(quinoa1)
     	parcela2.plantarPlanta(quinoa2)
+    	parcela2.plantarPlanta(quinoa3)
     }
     
     test "la cantidad de plantas en la parcela 1 es 2" {	
     	assert.equals(2, parcela1.cantidadPlantas())
     }
     
-    test "la cantidad de plantas en la parcela 2 es 3" {
-    	assert.equals(3, parcela2.cantidadPlantas())
+    test "la cantidad de plantas en la parcela 2 es 5" {
+    	assert.equals(5, parcela2.cantidadPlantas())
     }
     
     test "la cantidad de parcelas del inta son 2" {
@@ -34,12 +38,26 @@ describe "tests de Inta" {
         assert.equals(2, inta.cantidadDeParcelas())
     }
     
-    test "la cantidad de plantas en parcelas del inta son 5 y el promedio son 2.5" {
+    test "la cantidad de plantas en parcelas del inta son 7 y el promedio son 3.5" {
     	inta.agregarParcela(parcela1)
     	inta.agregarParcela(parcela2)
     	
-    	assert.equals(5, inta.sumaDeCantidadDePlantasEnParcelas())
-    	assert.equals(2.5, inta.promedioDePlantasPorParcela())
+    	assert.equals(7, inta.sumaDeCantidadDePlantasEnParcelas())
+    	assert.equals(3.5, inta.promedioDePlantasPorParcela())
+    }
+    
+    test "parcela 2 es la unica con mas de 4 plantas" {
+    	inta.agregarParcela(parcela1)
+    	inta.agregarParcela(parcela2)
+    	
+    	assert.equals([parcela2], inta.parcelasConMasDeCuatroPlantas())
+    }
+    
+    test "parcela mas autosustentable" {
+    	inta.agregarParcela(parcela1)
+    	inta.agregarParcela(parcela2)
+    	
+    	assert.equals(parcela2, inta.parcelaMasAutosustentable())
     }
    
 }
