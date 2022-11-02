@@ -6,6 +6,7 @@ describe "tests de plantas" {
     const sojita1 = new Soja(anioObtencionSemilla = 2009, altura = 0.6)
     const quinoa1 = new Quinoa(horasDeSolToleradas = 12, anioObtencionSemilla = 2010, altura = 1)
     const quinoa2 = new Quinoa(horasDeSolToleradas = 9, anioObtencionSemilla = 2001, altura = 2)
+	const sojaTransgenica1 = new SojaTransgenica(anioObtencionSemilla = 2010, altura = 0.8)
 
     test "mentita1 de 1 metro de altura da semillas" {
         assert.that(mentita1.daNuevasSemillas())
@@ -41,6 +42,18 @@ describe "tests de plantas" {
     
     test "quinoa2 da semillas" {
         assert.that(quinoa2.daNuevasSemillas())
+    }
+    
+    test "espacio ocupado de quinoa1 es 0.5" {
+    	assert.equals(0.5, quinoa1.espacioOcupado())
+    }
+    
+    test "espacio ocupado de quinoa2 es 0.5" {
+    	assert.equals(0.5, quinoa2.espacioOcupado())
+    }
+    
+    test "sojaTransgenica1 no da nuevas semillas" {
+    	assert.notThat(sojaTransgenica1.daNuevasSemillas())
     }
 }
 
