@@ -8,6 +8,7 @@ describe "tests de plantas" {
     const sojita3 = new Soja(anioObtencionSemilla = 2010, altura = 1.3)
     const sojita4 = new Soja(anioObtencionSemilla = 2010, altura = 1.4)
     const sojita5 = new Soja(anioObtencionSemilla = 2010, altura = 1.5)
+    const quinoa1 = new Quinoa(horasDeSolToleradas = 8, anioObtencionSemilla = 2005, altura = 2)
     
     method initialize() {
     	parcela1.plantarPlanta(sojita1)
@@ -28,6 +29,22 @@ describe "tests de plantas" {
     	assert.notThat(parcela1.tieneComplicaciones())	
     }
     
+    test "la cantidad de plantas en parcela1 es 4" {
+    	assert.equals(4, parcela1.cantidadPlantas())
+    }
+    
+    test "la lista de plantas en parcela1 es [sojita1, sojita2, sojita3, sojita4]" {
+    	assert.equals([sojita1, sojita2, sojita3, sojita4], parcela1.listaDePlantas())
+    }
+    
+    test "no hay lugar en parcela1 porque ya hay 4, que es lo maximo que tolera" {
+    	assert.notThat(parcela1.hayLugarEnParcela())
+    }
+    
+    test "porcentaje de plantas bien asociadas en parcela1 es 0" {
+    	assert.equals(0, parcela1.porcentajeDePlantasBienAsociadas())
+    }
+   
     // No se como testear el error, pero al testear marca que no puede agregarse una quinta.
     // test "La parcela1 no puede agregar una quinta planta y tira error" {
     //	assert.equals("No se puede plantar la planta", parcela1.plantarPlanta(sojita5))	
