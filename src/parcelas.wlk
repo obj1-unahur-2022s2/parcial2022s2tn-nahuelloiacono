@@ -1,3 +1,6 @@
+/*
+ * Recordá que cuando lanzas un excepción no continua la ejecución del método. En ```plantarPlanta(unaPlanta)``` no era necesario tener el else.
+ */
 import plantas.*
 
 class Parcela {
@@ -22,9 +25,8 @@ class Parcela {
 	// Agrega una planta a la parcela siempre y cuando se pueda. Sino tira error.
 	method plantarPlanta(unaPlanta) {
 		if (not self.hayLugarEnParcela() or horasDeSolRecibidas - 2 > unaPlanta.horasDeSolToleradas())
-			{self.error("No se puede plantar la planta")}
-		else 
-			{plantas.add(unaPlanta)}
+			self.error("No se puede plantar la planta")
+		plantas.add(unaPlanta)
 	}
 	// Método auxiliar para self.plantarPlanta(unaPlanta).
 	method hayLugarEnParcela() = self.cantidadPlantas() < self.cantidadDePlantasQueTolera() 

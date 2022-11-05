@@ -1,8 +1,11 @@
+/*
+ * ``` method leResultaIdealLaParcela(unaParcela) ``` debía ser abstracto en Planta y sobreescribirlo en las subclases
+ */
 import parcelas.*
 
 // Superclase
 class Planta {
-    const anioObtencionSemilla
+    const property anioObtencionSemilla
     var property altura
     
     // Número de horas.
@@ -13,7 +16,7 @@ class Planta {
     method daNuevasSemillas() = self.esFuerte()
     // Número de metros cuadrados. 
     method espacioOcupado()
-    
+    method leResultaIdealLaParcela(unaParcela)
     method seAsociaBienEnParcela(unaParcela) = unaParcela.tipoParcela().seAsocianBien(self, unaParcela)
 }
 
@@ -23,7 +26,7 @@ class Menta inherits Planta {
     override method daNuevasSemillas() = super() or altura > 0.4 
     override method espacioOcupado() = altura * 3
     
-    method leResultaIdealLaParcela(unaParcela) = unaParcela.superficie() > 6
+    override method leResultaIdealLaParcela(unaParcela) = unaParcela.superficie() > 6
     
 }
 
@@ -42,7 +45,7 @@ class Soja inherits Planta {
     override method daNuevasSemillas() = super() or (anioObtencionSemilla > 2007 and altura > 1)
     override method espacioOcupado() = altura / 2
     
-    method leResultaIdealLaParcela(unaParcela) = unaParcela.horasDeSolRecibidas() == self.horasDeSolToleradas()
+    override method leResultaIdealLaParcela(unaParcela) = unaParcela.horasDeSolRecibidas() == self.horasDeSolToleradas()
 }
 
 // Subclase de Soja.
@@ -58,5 +61,5 @@ class Quinoa inherits Planta {
     override method daNuevasSemillas() = super() or anioObtencionSemilla < 2005
     override method espacioOcupado() = 0.5
     
-    method leResultaIdealLaParcela(unaParcela) = unaParcela.listaDePlantas().all({ p => p.altura() < 1.5})
+    override method leResultaIdealLaParcela(unaParcela) = unaParcela.listaDePlantas().all({ p => p.altura() < 1.5})
 }
