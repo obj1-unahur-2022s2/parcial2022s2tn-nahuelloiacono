@@ -1,3 +1,4 @@
+/*No esta bueno dejar en el código varialbes que no se usan nunca */
 import parcelas.*
 import plantas.*
 
@@ -7,7 +8,7 @@ describe "tests de plantas" {
     const sojita2 = new Soja(anioObtencionSemilla = 2010, altura = 1.2)
     const sojita3 = new Soja(anioObtencionSemilla = 2010, altura = 1.3)
     const sojita4 = new Soja(anioObtencionSemilla = 2010, altura = 1.4)
-    const sojita5 = new Soja(anioObtencionSemilla = 2010, altura = 1.5)
+    //const sojita5 = new Soja(anioObtencionSemilla = 2010, altura = 1.5)
     
     method initialize() {
     	parcela1.plantarPlanta(sojita1)
